@@ -32,14 +32,12 @@
       for(Yonghu y:yh){
       %>
       <tr>
-         <tr>
            <td class="center"><%=y.getYonghuming() %></td>
            <td class="center"><%=y.getYonghudianhua() %></td>
             <td class="center"><%=y.getYonghuxingbie() %></td>
            <td class="center"><%=y.getYonghudizhi() %></td>
            <td class="center"><%=y.getYonghuemaildizhi()%></td>  
-           <td><div class="button-group"> <a class="button border-main" href=""><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>    
+           <td><div class="button-group"> <a class="button border-main" href="YongHuServlet?method=getYonghuInfo&yonghudianhua<%=y.getYonghudianhua()%>"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
       </tr>
       <%} %>
       <tr>

@@ -58,8 +58,8 @@ public class YongHuServlet extends HttpServlet {
 	case"delete":
 	{
 		System.out.println("删除用户方法！");
-		String dianhua=request.getParameter("yonghudianhua");
-		boolean result=dao.deleteYongHu(Integer.parseInt(dianhua));
+		String yonghudianhua=request.getParameter("yonghudianhua");
+		boolean result=dao.deleteYongHu(Integer.parseInt(yonghudianhua));
 		request.setAttribute("deleteResult", result);
 		request.getRequestDispatcher("YongHuServlet?method=listAll").forward(request, response);
 		break;
@@ -72,6 +72,14 @@ public class YongHuServlet extends HttpServlet {
 	case"getYonghuInfo":
 	{
 		System.out.println("修改前的查询");
+		//1获取用户超链接传过来的用户电话
+		String yonghudianhua=request.getParameter("yonghudianhua");
+		//2调用dao查询出这个用户的信息
+		Yonghu yh=dao.getYonghuDetailByld(Integer.parseInt(yonghudianhua));
+		//3将查询出来的用户存储到request的对象中
+		request.setAttribute("yh", yh);
+		//4跳转到修改的jsp上显示修改的用户信息
+		request.getRequestDispatcher("updateYonghu.jsp").forward(request, response);
 		break;
 	}
 	}
